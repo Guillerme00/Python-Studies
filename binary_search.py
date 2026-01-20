@@ -1,19 +1,20 @@
 numb_list = []
 
-for i in range(0,101):
+for i in range(0,100000):
     numb_list.append(i)
 
-def find_number(numb_list, numb):
-    low = 0
-    high = len(numb_list) - 1
-    mid = low + (high-low)//2
-    
+def find_number(numb_list, numb, low, high):
     while low <= high:
-        if numb < high/2:
-            print("Low")
+        mid = low + (high-low)//2
+        if numb_list[mid] == numb:
+            print("Ok")
+            return mid
+
+        elif numb_list[mid] > numb:
+            high = mid -1
         
-        elif numb > high/2:
-            print("High")
+        elif numb_list[mid] < numb:
+            low = mid + 1
 
 
-find_number(numb_list, 5)
+print(find_number(numb_list, 32585, 0, (len(numb_list)-1)))
